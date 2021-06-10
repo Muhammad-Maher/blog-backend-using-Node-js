@@ -43,7 +43,7 @@ const options = {
     },
     server: [
       {
-        url: process.env.URL || "http://localhost:3000/",
+        url: process.env.URL,
       },
     ],
   },
@@ -52,7 +52,7 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/", swaggerUi.serve, swaggerUi.setup(specs));
 
 const pathToSwaggerUi = require("swagger-ui-dist").absolutePath();
 app.use(express.static(pathToSwaggerUi));
